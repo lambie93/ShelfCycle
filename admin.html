@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin | ShelfCycle</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="catalog.css">
+    <script src="admin.js" defer></script>
+</head>
+<body>
+    <header>
+        <img src="images/ShelfCycle_logo-removebg-preview.png" alt="shelf cycle logo" width="150">
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="catalog.html">Catalog</a>
+            <a href="maps.html">Maps</a>
+            <a href="about.html">About</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="form-section" id="loginSection">
+            <span class="eyebrow">ADMIN ACCESS</span>
+            <h1>Admin login</h1>
+            <p>Enter the admin password to review book suggestions.</p>
+
+            <form id="loginForm" class="book-form">
+                <label>
+                    Password
+                    <input type="password" name="password" required autocomplete="current-password">
+                </label>
+                <button type="submit" class="primary-button">Log in</button>
+                <p id="loginMessage" role="alert"></p>
+            </form>
+        </section>
+
+        <section class="form-section" id="reviewSection" hidden>
+            <div class="section-heading">
+                <div>
+                    <span class="eyebrow">PENDING SUGGESTIONS</span>
+                    <h1>Review queue</h1>
+                    <p id="pendingCount">Loading...</p>
+                </div>
+                <button id="logoutButton" type="button" class="text-link">Log out</button>
+            </div>
+
+            <div id="pendingList" class="pending-list"></div>
+            <p id="adminMessage" role="status"></p>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 ShelfCycle. All rights reserved.</p>
+    </footer>
+</body>
+</html>

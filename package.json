@@ -1,0 +1,12 @@
+{
+  "name": "shelfcycle",
+  "version": "1.0.0",
+  "description": "ShelfCycle community book catalog",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.21.2"
+  }
+}

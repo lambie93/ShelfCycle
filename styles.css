@@ -1,0 +1,31 @@
+body {
+    margin: 0;
+}
+
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.75rem 2rem;
+    background: #fff;
+    font-family: "Roboto Condensed", sans-serif;
+}
+
+nav {
+    position: sticky;
+    top: 0;
+}
+
+nav a {
+    margin-left: 1.25rem;
+    color: black;
+    text-decoration: none;
+}
+
+nav a:hover {
+    color: #5b7c42;
+}
+
+nav a.active {
+    color: #428a9b;
+}

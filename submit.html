@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Suggest a Book | ShelfCycle</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="catalog.css">
+    <script src="submit.js" defer></script>
+</head>
+<body>
+    <header>
+        <img src="images/ShelfCycle_logo-removebg-preview.png" alt="shelf cycle logo" width="150">
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="catalog.html">Catalog</a>
+            <a href="maps.html">Maps</a>
+            <a href="about.html">About</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="form-section">
+            <span class="eyebrow">KEEP STORIES MOVING</span>
+            <h1>Suggest a book</h1>
+            <p>Something missing from our shelves? Suggest it here — an admin will review it before it appears in the catalog.</p>
+
+            <form id="bookForm" class="book-form">
+                <label>
+                    Title *
+                    <input type="text" name="title" required maxlength="200">
+                </label>
+                <label>
+                    Author *
+                    <input type="text" name="author" required maxlength="200">
+                </label>
+                <label>
+                    Genre
+                    <select name="genre">
+                        <option value="Fiction">Fiction</option>
+                        <option value="Fantasy">Fantasy</option>
+                        <option value="Science Fiction">Science Fiction</option>
+                        <option value="Mystery">Mystery</option>
+                        <option value="Classics">Classics</option>
+                        <option value="Nonfiction">Nonfiction</option>
+                    </select>
+                </label>
+                <label>
+                    Pages (1–1000) *
+                    <input type="number" name="pages" min="1" max="1000" required>
+                </label>
+                <label>
+                    Language
+                    <input type="text" name="language" value="English" maxlength="50">
+                </label>
+                <label>
+                    Publication year *
+                    <input type="number" name="year" min="0" required>
+                </label>
+                <label>
+                    Your rating
+                    <select name="rating">
+                        <option value="">No rating</option>
+                        <option value="1">★</option>
+                        <option value="2">★★</option>
+                        <option value="3">★★★</option>
+                        <option value="4">★★★★</option>
+                        <option value="5">★★★★★</option>
+                    </select>
+                </label>
+                <button type="submit" class="primary-button">Submit for review</button>
+                <p id="formMessage" role="status"></p>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 ShelfCycle. All rights reserved.</p>
+    </footer>
+</body>
+</html>

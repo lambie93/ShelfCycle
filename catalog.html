@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catalog | ShelfCycle</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="catalog.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <script src="catalog.js" defer></script>   
+</head>
+<body>
+    <header>
+        <a href="index.html"><img src="images/ShelfCycle_logo-removebg-preview.png" alt="shelf cycle logo" width="150"></a>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="catalog.html" class="active">Catalog</a>
+            <a href="maps.html">Maps</a>
+            <a href="about.html">About</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="catalog-section" id="browse">
+            <div class="section-heading">
+                <div>
+                    <h2>Find your next read...</h2>
+                </div>
+            </div>
+
+            <div class="search-bar">
+                <span class="search-icon" aria-hidden="true">⌕</span>
+                <input
+                    type="search"
+                    id="searchInput"
+                    placeholder="Search by title, author, and ISBN..."
+                >
+                <button id="clearSearch" type="button">×</button>
+            </div>
+
+            <div class="catalog-toolbar">
+                <div class="filter-heading">
+                    <span>Filters</span>
+                    <button id="clearFilters" type="button">Clear all</button>
+                </div>
+
+                <div class="filters">
+                    <label class="filter-control">
+                        <span>Sort by</span>
+                        <select id="sortFilter">
+                            <option value="title">Title: A–Z</option>
+                            <option value="author">Author: A–Z</option>
+                        </select>
+                    </label>
+
+                    <label class="filter-control">
+                        <span>Language</span>
+                        <select id="languageFilter">
+                            <option value="">All</option>
+                        </select>
+                    </label>
+
+                    <div class="filter-control slider-control">
+                        <span>Max pages: <strong id="pagesValue">1000</strong></span>
+                        <input type="range" id="pagesFilter" min="1" max="1000" value="1000">
+                    </div>
+
+                    <div class="filter-control slider-control">
+                        <span>Min rating: <strong id="ratingValue">Any</strong></span>
+                        <input type="range" id="ratingFilter" min="0" max="5" step="1" value="0">
+                    </div>
+
+                    <div class="filter-control slider-control">
+                        <span>Published after: <strong id="yearValue">—</strong></span>
+                        <input type="range" id="yearFilter" min="1900" max="2025" value="1900">
+                    </div>
+                </div>
+            </div>
+
+            <div class="results-heading">
+                <p id="resultsCount">Loading books...</p>
+            </div>
+
+            <div class="book-grid" id="bookGrid"></div>
+
+            <div class="empty-state" id="emptyState" hidden>
+                <span>⌕</span>
+                <h3>No books found</h3>
+                <p>Try a different search or adjust your filters.</p>
+                <button id="resetSearch" class="primary-button" type="button">
+                    Reset catalog
+                </button>
+            </div>
+        </section>
+
+        <section class="share-banner" id="submit">
+            <div>
+                <h2>Is something missing<br>from our shelves?</h2>
+            </div>
+            <a href="submit.html" class="secondary-button">Suggest a book ↗</a>
+        </section>
+    </main>
+
+    <footer>
+        <p>Good books deserve a second chapter.</p>
+        <p>&copy; 2026 ShelfCycle. All rights reserved.</p>
+    </footer>
+</body>
+</html>
