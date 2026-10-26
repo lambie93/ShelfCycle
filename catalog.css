@@ -311,7 +311,7 @@ footer {
 }
 
 .stars {
-    color: #428a9b;
+    color: #5b7c42;
     font-size: 1rem;
     letter-spacing: 0.1em;
 }
@@ -342,9 +342,13 @@ footer {
     padding: 0 0.1rem;
 }
 
-.rate-widget button:hover,
+.rate-widget:hover button,
 .rate-widget button.active {
-    color: #428a9b;
+    color: #5b7c42;
+}
+
+.rate-widget button:hover ~ button {
+    color: #e0d5c2;
 }
 
 /* Empty state */
