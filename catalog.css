@@ -171,6 +171,7 @@ footer {
     background: none;
     color: #a0612d;
     cursor: pointer;
+    font-family: inherit;
     font-size: 0.9rem;
     text-decoration: underline;
 }
@@ -229,7 +230,7 @@ footer {
 }
 
 .sort-card {
-    flex: 0 0 220px;
+    flex: 0 0 200px;
 }
 
 .browse-main {
