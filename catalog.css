@@ -196,12 +196,6 @@ footer {
     width: 180px;
 }
 
-.year-inputs {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-}
-
 .filter-control input[type="number"] {
     padding: 0.4rem 0.5rem;
     border: 1px solid #e5ddd0;
@@ -353,6 +347,11 @@ footer {
 
 .empty-state > span {
     font-size: 2.5rem;
+}
+
+#resetSearch {
+    background: #428a9b;
+    font-family: "Roboto Condensed", sans-serif;
 }
 
 /* Share banner */
