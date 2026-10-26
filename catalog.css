@@ -72,7 +72,7 @@ footer {
 }
 
 .decoration-star {
-    color: #a0612d;
+    color: #428a9b;
     font-size: 1.5rem;
     margin: 0 0.5rem;
 }
@@ -100,7 +100,7 @@ footer {
 }
 
 .text-link {
-    color: #a0612d;
+    color: #428a9b;
     font-weight: bold;
     text-decoration: none;
 }
@@ -138,7 +138,7 @@ footer {
     background: none;
     font-size: 1.25rem;
     cursor: pointer;
-    color: #7a6a58;
+    color: black;
 }
 
 /* Filters */
@@ -169,7 +169,7 @@ footer {
 #clearFilters {
     border: none;
     background: none;
-    color: #a0612d;
+    color: #428a9b;
     cursor: pointer;
     font-family: inherit;
     font-size: 0.9rem;
@@ -259,7 +259,7 @@ footer {
 }
 
 .slider-control strong {
-    color: #a0612d;
+    color: #428a9b;
 }
 
 /* Results */
@@ -269,7 +269,7 @@ footer {
     justify-content: space-between;
     align-items: baseline;
     margin: 1.5rem 0 1rem;
-    color: #7a6a58;
+    color: black;
     font-size: 0.9rem;
 }
 
@@ -306,12 +306,12 @@ footer {
 
 .book-card .meta {
     font-size: 0.85rem;
-    color: #7a6a58;
+    color: black;
     margin: 0;
 }
 
 .stars {
-    color: #d99a2b;
+    color: #428a9b;
     font-size: 1rem;
     letter-spacing: 0.1em;
 }
@@ -322,7 +322,7 @@ footer {
 
 .rating-label {
     font-size: 0.8rem;
-    color: #7a6a58;
+    color: black;
 }
 
 .rate-widget {
@@ -330,7 +330,7 @@ footer {
     border-top: 1px dashed #e5ddd0;
     padding-top: 0.5rem;
     font-size: 0.85rem;
-    color: #7a6a58;
+    color: black;
 }
 
 .rate-widget button {
@@ -344,7 +344,7 @@ footer {
 
 .rate-widget button:hover,
 .rate-widget button.active {
-    color: #d99a2b;
+    color: #428a9b;
 }
 
 /* Empty state */
@@ -352,7 +352,7 @@ footer {
 .empty-state {
     text-align: center;
     padding: 3rem 1rem;
-    color: #7a6a58;
+    color: black;
 }
 
 .empty-state > span {

@@ -58,21 +58,24 @@ function getVisibleBooks() {
 
 function render() {
     const visible = getVisibleBooks();
-    els.grid.innerHTML = visible.map((b) => `
+    els.grid.innerHTML = visible.map((b) => {
+        const displayRating = b.rating > 0 ? b.rating : 1;
+        return `
         <article class="book-card">
             <h3>${escapeHtml(b.title)}</h3>
             <p class="author">${escapeHtml(b.author)}</p>
             <p class="meta">${escapeHtml(b.genre)} · ${b.pages} pages · ${escapeHtml(b.language)} · ${b.year}</p>
             <div>
-                <span class="stars">${starString(b.rating)}</span>
-                <span class="rating-label">${b.rating > 0 ? b.rating.toFixed(1) : "Unrated"} (${b.ratingCount})</span>
+                <span class="stars">${starString(displayRating)}</span>
+                <span class="rating-label">${displayRating.toFixed(1)} (${b.ratingCount})</span>
             </div>
             <div class="rate-widget" data-id="${b.id}">
                 Rate it:
                 ${[1, 2, 3, 4, 5].map((n) => `<button type="button" data-stars="${n}" aria-label="Rate ${n} stars">★</button>`).join("")}
             </div>
         </article>
-    `).join("");
+    `;
+    }).join("");
 
     els.count.textContent = `${visible.length} of ${state.books.length} books`;
     els.empty.hidden = visible.length > 0;
