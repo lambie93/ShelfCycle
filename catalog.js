@@ -11,7 +11,6 @@ const state = {
 
 const els = {
     search: document.getElementById("searchInput"),
-    clearSearch: document.getElementById("clearSearch"),
     clearFilters: document.getElementById("clearFilters"),
     sort: document.getElementById("sortFilter"),
     language: document.getElementById("languageFilter"),
@@ -68,7 +67,7 @@ function render() {
                 <span class="rating-label">${b.rating > 0 ? `${b.rating.toFixed(1)} (${b.ratingCount})` : ""}</span>
             </div>
             <div class="rate-widget" data-id="${b.id}">
-                Rate
+                Rate:
                 ${[1, 2, 3, 4, 5].map((n) => `<button type="button" data-stars="${n}" aria-label="Rate ${n} stars">★</button>`).join("")}
             </div>
         </article>
@@ -115,7 +114,6 @@ function resetControls() {
 }
 
 els.search.addEventListener("input", () => { state.search = els.search.value; render(); });
-els.clearSearch.addEventListener("click", () => { state.search = ""; els.search.value = ""; render(); });
 els.sort.addEventListener("change", () => { state.sort = els.sort.value; render(); });
 els.language.addEventListener("change", () => { state.language = els.language.value; render(); });
 els.minPages.addEventListener("input", () => { state.minPages = Number(els.minPages.value); updateSliderLabels(); render(); });

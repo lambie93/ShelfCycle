@@ -133,14 +133,6 @@ footer {
     outline-offset: 3px;
 }
 
-#clearSearch {
-    border: none;
-    background: none;
-    font-size: 1.25rem;
-    cursor: pointer;
-    color: black;
-}
-
 /* Filters */
 
 .catalog-toolbar {
