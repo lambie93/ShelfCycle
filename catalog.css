@@ -144,6 +144,14 @@ footer {
 /* Filters */
 
 .catalog-toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.25rem;
+}
+
+.toolbar-card {
+    flex: 1;
+    min-width: 280px;
     background: #fff;
     border: 1px solid #e5ddd0;
     border-radius: 12px;
@@ -191,8 +199,24 @@ footer {
 }
 
 .slider-control input[type="range"] {
-    accent-color: #a0612d;
+    accent-color: #5b7c42;
     width: 180px;
+}
+
+.year-inputs {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.filter-control input[type="number"] {
+    padding: 0.4rem 0.5rem;
+    border: 1px solid #e5ddd0;
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 0.95rem;
+    background: #faf6ef;
+    width: 90px;
 }
 
 .slider-control strong {
