@@ -30,6 +30,8 @@
                 <p><strong>Have the book handy?</strong> Scan its barcode or type the ISBN and we'll fill in the details for you.</p>
                 <div class="isbn-controls">
                     <button type="button" id="scanButton" class="primary-button">Scan ISBN with camera</button>
+                    <button type="button" id="photoButton" class="secondary-button">Photograph barcode</button>
+                    <input type="file" id="barcodePhoto" accept="image/*" capture="environment" hidden>
                     <span>or</span>
                     <input type="text" id="isbnInput" inputmode="numeric" placeholder="Enter ISBN (e.g. 9780140328721)" maxlength="17">
                     <button type="button" id="lookupButton" class="secondary-button">Look up</button>
