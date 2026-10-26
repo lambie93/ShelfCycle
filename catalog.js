@@ -15,13 +15,12 @@ const els = {
     sort: document.getElementById("sortFilter"),
     language: document.getElementById("languageFilter"),
     minPages: document.getElementById("minPagesFilter"),
-    minPagesValue: document.getElementById("minPagesValue"),
+    minPagesInput: document.getElementById("minPagesInput"),
     pages: document.getElementById("pagesFilter"),
-    pagesValue: document.getElementById("pagesValue"),
+    maxPagesInput: document.getElementById("maxPagesInput"),
     rating: document.getElementById("ratingFilter"),
     ratingValue: document.getElementById("ratingValue"),
     year: document.getElementById("yearFilter"),
-    yearValue: document.getElementById("yearValue"),
     yearInput: document.getElementById("yearInput"),
     grid: document.getElementById("bookGrid"),
     count: document.getElementById("resultsCount"),
@@ -83,13 +82,27 @@ function escapeHtml(text) {
     return div.innerHTML;
 }
 
-function updateSliderLabels() {
-    els.minPagesValue.textContent = state.minPages;
-    els.pagesValue.textContent = state.maxPages;
+function updateControls() {
+    els.minPages.value = state.minPages;
+    els.minPagesInput.value = state.minPages;
+    els.pages.value = state.maxPages;
+    els.maxPagesInput.value = state.maxPages;
+    els.rating.value = state.minRating;
     els.ratingValue.textContent = state.minRating === 0 ? "Any" : "★".repeat(state.minRating);
-    els.yearValue.textContent = state.minYear;
     els.year.value = state.minYear;
     els.yearInput.value = state.minYear;
+}
+
+function bindNumberInput(input, apply) {
+    input.addEventListener("change", () => {
+        const min = Number(input.min);
+        const max = Number(input.max);
+        let value = Number(input.value);
+        if (!Number.isFinite(value)) value = min;
+        apply(Math.min(Math.max(value, min), max));
+        updateControls();
+        render();
+    });
 }
 
 function resetControls() {
@@ -104,30 +117,21 @@ function resetControls() {
     els.search.value = "";
     els.sort.value = "title";
     els.language.value = "";
-    els.minPages.value = "1";
-    els.pages.value = "1000";
-    els.rating.value = "0";
-    els.year.value = els.year.min;
 
-    updateSliderLabels();
+    updateControls();
     render();
 }
 
 els.search.addEventListener("input", () => { state.search = els.search.value; render(); });
 els.sort.addEventListener("change", () => { state.sort = els.sort.value; render(); });
 els.language.addEventListener("change", () => { state.language = els.language.value; render(); });
-els.minPages.addEventListener("input", () => { state.minPages = Number(els.minPages.value); updateSliderLabels(); render(); });
-els.pages.addEventListener("input", () => { state.maxPages = Number(els.pages.value); updateSliderLabels(); render(); });
-els.rating.addEventListener("input", () => { state.minRating = Number(els.rating.value); updateSliderLabels(); render(); });
-els.year.addEventListener("input", () => { state.minYear = Number(els.year.value); updateSliderLabels(); render(); });
-els.yearInput.addEventListener("change", () => {
-    let year = Number(els.yearInput.value);
-    if (!Number.isFinite(year)) year = Number(els.year.min);
-    year = Math.min(Math.max(year, Number(els.year.min)), Number(els.year.max));
-    state.minYear = year;
-    updateSliderLabels();
-    render();
-});
+els.minPages.addEventListener("input", () => { state.minPages = Number(els.minPages.value); updateControls(); render(); });
+els.pages.addEventListener("input", () => { state.maxPages = Number(els.pages.value); updateControls(); render(); });
+els.rating.addEventListener("input", () => { state.minRating = Number(els.rating.value); updateControls(); render(); });
+els.year.addEventListener("input", () => { state.minYear = Number(els.year.value); updateControls(); render(); });
+bindNumberInput(els.minPagesInput, (v) => { state.minPages = v; });
+bindNumberInput(els.maxPagesInput, (v) => { state.maxPages = v; });
+bindNumberInput(els.yearInput, (v) => { state.minYear = v; });
 els.clearFilters.addEventListener("click", resetControls);
 els.reset.addEventListener("click", resetControls);
 
@@ -173,7 +177,7 @@ async function init() {
         els.yearInput.max = currentYear;
         state.minYear = Number(els.year.min);
 
-        updateSliderLabels();
+        updateControls();
         render();
     } catch {
         els.count.textContent = "Could not load the catalog. Is the server running?";

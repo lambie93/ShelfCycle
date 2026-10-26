@@ -55,12 +55,12 @@
                         </label>
 
                         <div class="filter-control slider-control">
-                            <span>Minimum Pages: <strong id="minPagesValue">1</strong></span>
+                            <span>Minimum Pages: <input type="number" id="minPagesInput" min="1" max="1000" value="1"></span>
                             <input type="range" id="minPagesFilter" min="1" max="1000" value="1">
                         </div>
 
                         <div class="filter-control slider-control">
-                            <span>Maximum Pages: <strong id="pagesValue">1000</strong></span>
+                            <span>Maximum Pages: <input type="number" id="maxPagesInput" min="1" max="1000" value="1000"></span>
                             <input type="range" id="pagesFilter" min="1" max="1000" value="1000">
                         </div>
 
@@ -70,11 +70,8 @@
                         </div>
 
                         <div class="filter-control slider-control">
-                            <span>Published After: <strong id="yearValue">1440</strong></span>
-                            <div class="year-inputs">
-                                <input type="range" id="yearFilter" min="1440" max="2025" value="1440">
-                                <input type="number" id="yearInput" min="1440" max="2025" value="1440">
-                            </div>
+                            <span>Published After: <input type="number" id="yearInput" min="1440" max="2025" value="1440"></span>
+                            <input type="range" id="yearFilter" min="1440" max="2025" value="1440">
                         </div>
                     </div>
                 </div>
