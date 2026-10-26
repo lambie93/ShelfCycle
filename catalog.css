@@ -219,6 +219,39 @@ footer {
     width: 90px;
 }
 
+/* Sort sidebar next to the book grid */
+
+.browse-layout {
+    display: flex;
+    gap: 1.25rem;
+    align-items: flex-start;
+    margin-top: 1.5rem;
+}
+
+.sort-card {
+    flex: 0 0 220px;
+}
+
+.browse-main {
+    flex: 1;
+    min-width: 0;
+}
+
+.browse-main .results-heading {
+    margin-top: 0;
+}
+
+@media (max-width: 700px) {
+    .browse-layout {
+        flex-direction: column;
+    }
+
+    .sort-card {
+        flex: none;
+        align-self: stretch;
+    }
+}
+
 .slider-control strong {
     color: #a0612d;
 }

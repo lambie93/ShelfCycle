@@ -43,19 +43,6 @@
             <div class="catalog-toolbar">
                 <div class="toolbar-card">
                     <div class="filter-heading">
-                        <span>Sort by</span>
-                    </div>
-
-                    <label class="filter-control">
-                        <select id="sortFilter">
-                            <option value="title">Title: A–Z</option>
-                            <option value="author">Author: A–Z</option>
-                        </select>
-                    </label>
-                </div>
-
-                <div class="toolbar-card">
-                    <div class="filter-heading">
                         <span>Filters</span>
                         <button id="clearFilters" type="button">Clear all</button>
                     </div>
@@ -94,19 +81,36 @@
                 </div>
             </div>
 
-            <div class="results-heading">
-                <p id="resultsCount">Loading books...</p>
-            </div>
+            <div class="browse-layout">
+                <div class="toolbar-card sort-card">
+                    <div class="filter-heading">
+                        <span>Sort by</span>
+                    </div>
 
-            <div class="book-grid" id="bookGrid"></div>
+                    <label class="filter-control">
+                        <select id="sortFilter">
+                            <option value="title">Title: A–Z</option>
+                            <option value="author">Author: A–Z</option>
+                        </select>
+                    </label>
+                </div>
 
-            <div class="empty-state" id="emptyState" hidden>
-                <span>⌕</span>
-                <h3>No books found</h3>
-                <p>Try a different search or adjust your filters.</p>
-                <button id="resetSearch" class="primary-button" type="button">
-                    Reset catalog
-                </button>
+                <div class="browse-main">
+                    <div class="results-heading">
+                        <p id="resultsCount">Loading books...</p>
+                    </div>
+
+                    <div class="book-grid" id="bookGrid"></div>
+
+                    <div class="empty-state" id="emptyState" hidden>
+                        <span>⌕</span>
+                        <h3>No books found</h3>
+                        <p>Try a different search or adjust your filters.</p>
+                        <button id="resetSearch" class="primary-button" type="button">
+                            Reset catalog
+                        </button>
+                    </div>
+                </div>
             </div>
         </section>
 
