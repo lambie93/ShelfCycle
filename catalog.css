@@ -489,7 +489,9 @@ footer {
 }
 
 #scanner video {
+    width: 100%;
     border-radius: 8px;
+    background: #000;
 }
 
 #isbnMessage {

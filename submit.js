@@ -5,7 +5,8 @@ const isbnMessage = document.getElementById("isbnMessage");
 const scanButton = document.getElementById("scanButton");
 const lookupButton = document.getElementById("lookupButton");
 const scannerBox = document.getElementById("scanner");
-let scanner = null;
+const scannerVideo = document.getElementById("scannerVideo");
+let codeReader = null;
 
 const LANGUAGE_NAMES = {
     eng: "English", spa: "Spanish", fre: "French", ger: "German",
@@ -75,56 +76,57 @@ async function lookupIsbn(rawIsbn) {
     }
 }
 
-async function stopScanner() {
-    if (!scanner) return;
-    try { await scanner.stop(); } catch { /* already stopped */ }
-    try { scanner.clear(); } catch { /* ignore */ }
-    scanner = null;
+function stopScanner() {
+    if (codeReader) {
+        try { codeReader.reset(); } catch { /* ignore */ }
+        codeReader = null;
+    }
     scannerBox.hidden = true;
     scanButton.textContent = "Scan ISBN with camera";
 }
 
 async function toggleScanner() {
-    if (scanner) {
-        await stopScanner();
+    if (codeReader) {
+        stopScanner();
         return;
     }
     if (!window.isSecureContext) {
         setIsbnMessage("Camera scanning needs a secure (HTTPS) connection. Type the ISBN instead.", "form-error");
         return;
     }
-    if (typeof Html5Qrcode === "undefined") {
+    if (typeof ZXing === "undefined") {
         setIsbnMessage("The scanner failed to load. Type the ISBN instead.", "form-error");
         return;
     }
 
     scannerBox.hidden = false;
-    scanner = new Html5Qrcode("scanner", {
-        formatsToSupport: [
-            Html5QrcodeSupportedFormats.EAN_13,
-            Html5QrcodeSupportedFormats.EAN_8,
-            Html5QrcodeSupportedFormats.UPC_A,
-            Html5QrcodeSupportedFormats.UPC_E,
-        ],
-        verbose: false,
-    });
+    const hints = new Map([
+        [ZXing.DecodeHintType.POSSIBLE_FORMATS, [
+            ZXing.BarcodeFormat.EAN_13,
+            ZXing.BarcodeFormat.EAN_8,
+            ZXing.BarcodeFormat.UPC_A,
+            ZXing.BarcodeFormat.UPC_E,
+        ]],
+        [ZXing.DecodeHintType.TRY_HARDER, true],
+    ]);
+    codeReader = new ZXing.BrowserMultiFormatReader(hints, 300);
     try {
-        await scanner.start(
-            { facingMode: "environment" },
-            { fps: 10, qrbox: { width: 260, height: 120 } },
-            async (decoded) => {
-                await stopScanner();
+        await codeReader.decodeFromConstraints(
+            { video: { facingMode: "environment", width: { ideal: 1280 }, height: { ideal: 720 } } },
+            scannerVideo,
+            (result) => {
+                if (!result) return;
+                const decoded = result.getText();
+                stopScanner();
                 isbnInput.value = decoded;
                 lookupIsbn(decoded);
-            },
-            () => {}
+            }
         );
         scanButton.textContent = "Stop scanning";
+        setIsbnMessage("Point the camera at the book's barcode — good light and a steady hand help.");
     } catch {
         setIsbnMessage("Could not access the camera. Check your browser permissions or type the ISBN instead.", "form-error");
-        scannerBox.hidden = true;
-        try { scanner.clear(); } catch { /* ignore */ }
-        scanner = null;
+        stopScanner();
     }
 }
 

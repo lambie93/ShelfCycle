@@ -6,7 +6,7 @@
     <title>Suggest a Book | ShelfCycle</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="catalog.css">
-    <script src="https://unpkg.com/html5-qrcode@2.3.8/html5-qrcode.min.js" defer></script>
+    <script src="https://unpkg.com/@zxing/library@0.21.3/umd/index.min.js" defer></script>
     <script src="submit.js" defer></script>
 </head>
 <body>
@@ -34,7 +34,7 @@
                     <input type="text" id="isbnInput" inputmode="numeric" placeholder="Enter ISBN (e.g. 9780140328721)" maxlength="17">
                     <button type="button" id="lookupButton" class="secondary-button">Look up</button>
                 </div>
-                <div id="scanner" hidden></div>
+                <div id="scanner" hidden><video id="scannerVideo" muted playsinline></video></div>
                 <p id="isbnMessage" role="status"></p>
             </div>
 
