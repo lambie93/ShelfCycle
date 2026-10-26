@@ -11,7 +11,8 @@
       "rating": 0,
       "ratingCount": 0,
       "status": "approved",
-      "exchangeType": "Give away"
+      "exchangeType": "Give away",
+      "isbn": "9780606186513"
     },
     {
       "id": 2,
@@ -24,7 +25,8 @@
       "rating": 0,
       "ratingCount": 0,
       "status": "approved",
-      "exchangeType": "Lend"
+      "exchangeType": "Lend",
+      "isbn": "9781480067080"
     },
     {
       "id": 3,
@@ -37,7 +39,8 @@
       "rating": 0,
       "ratingCount": 0,
       "status": "approved",
-      "exchangeType": "Donate to school"
+      "exchangeType": "Donate to school",
+      "isbn": "9798352867082"
     },
     {
       "id": 4,
@@ -50,7 +53,8 @@
       "rating": 0,
       "ratingCount": 0,
       "status": "approved",
-      "exchangeType": "Give away"
+      "exchangeType": "Give away",
+      "isbn": "9781973876953"
     },
     {
       "id": 5,
@@ -63,7 +67,8 @@
       "rating": 0,
       "ratingCount": 0,
       "status": "approved",
-      "exchangeType": "Lend"
+      "exchangeType": "Lend",
+      "isbn": "9786555110913"
     },
     {
       "id": 6,
@@ -76,7 +81,8 @@
       "rating": 0,
       "ratingCount": 0,
       "status": "approved",
-      "exchangeType": "Donate to school"
+      "exchangeType": "Donate to school",
+      "isbn": "9787542631466"
     },
     {
       "id": 7,
@@ -89,7 +95,8 @@
       "rating": 0,
       "ratingCount": 0,
       "status": "approved",
-      "exchangeType": "Give away"
+      "exchangeType": "Give away",
+      "isbn": "9780544699588"
     },
     {
       "id": 8,
@@ -102,7 +109,8 @@
       "rating": 0,
       "ratingCount": 0,
       "status": "approved",
-      "exchangeType": "Lend"
+      "exchangeType": "Lend",
+      "isbn": "9780340839935"
     },
     {
       "id": 9,
@@ -115,7 +123,8 @@
       "rating": 0,
       "ratingCount": 0,
       "status": "approved",
-      "exchangeType": "Donate to school"
+      "exchangeType": "Donate to school",
+      "isbn": "9780141032436"
     },
     {
       "id": 10,
@@ -128,7 +137,8 @@
       "rating": 0,
       "ratingCount": 0,
       "status": "approved",
-      "exchangeType": "Give away"
+      "exchangeType": "Give away",
+      "isbn": "9781448137749"
     },
     {
       "id": 11,
@@ -141,7 +151,8 @@
       "rating": 0,
       "ratingCount": 0,
       "status": "approved",
-      "exchangeType": "Lend"
+      "exchangeType": "Lend",
+      "isbn": "9781716994982"
     },
     {
       "id": 12,
@@ -154,7 +165,8 @@
       "rating": 0,
       "ratingCount": 0,
       "status": "approved",
-      "exchangeType": "Donate to school"
+      "exchangeType": "Donate to school",
+      "isbn": "9788901116150"
     },
     {
       "id": 13,
@@ -167,7 +179,8 @@
       "rating": 0,
       "ratingCount": 0,
       "status": "approved",
-      "exchangeType": "Give away"
+      "exchangeType": "Give away",
+      "isbn": "9781415900642"
     },
     {
       "id": 14,
@@ -180,7 +193,8 @@
       "rating": 0,
       "ratingCount": 0,
       "status": "approved",
-      "exchangeType": "Lend"
+      "exchangeType": "Lend",
+      "isbn": "9789045210841"
     },
     {
       "id": 15,
@@ -193,7 +207,8 @@
       "rating": 0,
       "ratingCount": 0,
       "status": "approved",
-      "exchangeType": "Donate to school"
+      "exchangeType": "Donate to school",
+      "isbn": "9780525510673"
     },
     {
       "id": 16,
@@ -206,7 +221,8 @@
       "rating": 0,
       "ratingCount": 0,
       "status": "approved",
-      "exchangeType": "Give away"
+      "exchangeType": "Give away",
+      "isbn": "9784152100061"
     },
     {
       "id": 17,
@@ -219,7 +235,8 @@
       "rating": 0,
       "ratingCount": 0,
       "status": "approved",
-      "exchangeType": "Lend"
+      "exchangeType": "Lend",
+      "isbn": "9780241988268"
     },
     {
       "id": 18,
@@ -232,7 +249,8 @@
       "rating": 0,
       "ratingCount": 0,
       "status": "approved",
-      "exchangeType": "Donate to school"
+      "exchangeType": "Donate to school",
+      "isbn": "9783453321342"
     },
     {
       "id": 20,
@@ -245,7 +263,8 @@
       "rating": 0,
       "ratingCount": 0,
       "status": "pending",
-      "exchangeType": "Give away"
+      "exchangeType": "Give away",
+      "isbn": "9789571340067"
     },
     {
       "id": 21,
@@ -258,7 +277,8 @@
       "rating": 0,
       "ratingCount": 0,
       "status": "approved",
-      "exchangeType": "Lend"
+      "exchangeType": "Lend",
+      "isbn": "9781439569740"
     },
     {
       "id": 22,
@@ -270,7 +290,8 @@
       "year": 1926,
       "rating": 0,
       "ratingCount": 0,
-      "status": "approved"
+      "status": "approved",
+      "isbn": "9788408010098"
     }
   ]
 }

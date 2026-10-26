@@ -150,6 +150,7 @@ form.addEventListener("submit", async (event) => {
         language: data.language || "English",
         year: Number(data.year),
         rating: data.rating ? Number(data.rating) : 0,
+        isbn: isbnInput.value.replace(/[^0-9Xx]/g, ""),
     };
 
     try {
@@ -167,6 +168,8 @@ form.addEventListener("submit", async (event) => {
         message.textContent = `Thank you! "${body.book.title}" was submitted and will appear once an admin approves it.`;
         message.className = "form-success";
         form.reset();
+        isbnInput.value = "";
+        setIsbnMessage("");
     } catch {
         message.textContent = "Could not reach the server. Please try again.";
         message.className = "form-error";

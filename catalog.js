@@ -39,10 +39,13 @@ function starString(rating) {
 
 function getVisibleBooks() {
     const query = state.search.trim().toLowerCase();
+    const isbnQuery = query.replace(/[^0-9x]/g, "");
     return state.books
         .filter((b) => {
-            if (query && ![b.title, b.author, b.genre].some((f) => f.toLowerCase().includes(query))) {
-                return false;
+            if (query) {
+                const matchesText = [b.title, b.author, b.genre].some((f) => f.toLowerCase().includes(query));
+                const matchesIsbn = isbnQuery.length > 0 && b.isbn && b.isbn.toLowerCase().includes(isbnQuery);
+                if (!matchesText && !matchesIsbn) return false;
             }
             if (b.pages < state.minPages) return false;
             if (b.pages > state.maxPages) return false;

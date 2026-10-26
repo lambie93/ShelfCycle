@@ -48,10 +48,14 @@ app.get("/api/books", (req, res) => {
 
 // Public: suggest a new book (goes to the pending queue).
 app.post("/api/books", (req, res) => {
-    const { title, author, genre, pages, language, year, rating, exchangeType } = req.body || {};
+    const { title, author, genre, pages, language, year, rating, exchangeType, isbn } = req.body || {};
 
     if (!title || !title.trim() || !author || !author.trim()) {
         return res.status(400).json({ error: "Title and author are required." });
+    }
+    const isbnClean = String(isbn || "").replace(/[^0-9Xx]/g, "").toUpperCase();
+    if (isbnClean && !/^\d{9}[\dX]$/.test(isbnClean) && !/^\d{13}$/.test(isbnClean)) {
+        return res.status(400).json({ error: "ISBN must be a valid 10- or 13-digit code." });
     }
     const pagesNum = Number(pages);
     if (!Number.isInteger(pagesNum) || pagesNum < 1 || pagesNum > 1000) {
@@ -81,6 +85,7 @@ app.post("/api/books", (req, res) => {
         exchangeType: EXCHANGE_TYPES.includes(exchangeType) ? exchangeType : "Lend",
         status: "pending",
     };
+    if (isbnClean) book.isbn = isbnClean;
     books.push(book);
     writeBooks(books);
     res.status(201).json({ message: "Book submitted for review.", book });
