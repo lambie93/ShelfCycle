@@ -231,6 +231,7 @@ footer {
 
 .sort-card {
     flex: 0 0 100px;
+    min-width: 0;
 }
 
 .sort-card .filter-control {
