@@ -65,7 +65,7 @@ function render() {
             <p class="meta">${escapeHtml(b.genre)} · ${b.pages} pages · ${escapeHtml(b.language)} · ${b.year}</p>
             <div>
                 <span class="stars">${starString(b.rating)}</span>
-                <span class="rating-label">${b.rating > 0 ? `${b.rating.toFixed(1)} (${b.ratingCount})` : "Unrated"}</span>
+                <span class="rating-label">${b.rating > 0 ? `${b.rating.toFixed(1)} (${b.ratingCount})` : ""}</span>
             </div>
             <div class="rate-widget" data-id="${b.id}">
                 Rate it:
