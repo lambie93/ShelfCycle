@@ -230,7 +230,11 @@ footer {
 }
 
 .sort-card {
-    flex: 0 0 200px;
+    flex: 0 0 180px;
+}
+
+.sort-card .filter-control {
+    min-width: 0;
 }
 
 .browse-main {
