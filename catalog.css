@@ -445,6 +445,57 @@ footer {
     margin: 0;
 }
 
+/* ISBN lookup (submit page) */
+
+.isbn-lookup {
+    background: #fff;
+    border: 1px solid #e5ddd0;
+    border-radius: 12px;
+    padding: 1.25rem 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.isbn-lookup > p {
+    margin: 0 0 0.75rem;
+    color: #5c4f41;
+}
+
+.isbn-controls {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.6rem;
+}
+
+.isbn-controls .primary-button,
+.isbn-controls .secondary-button {
+    margin-top: 0;
+}
+
+#isbnInput {
+    flex: 1;
+    min-width: 220px;
+    padding: 0.55rem 0.75rem;
+    border: 1px solid #e5ddd0;
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 1rem;
+    background: #faf6ef;
+}
+
+#scanner {
+    margin-top: 1rem;
+    max-width: 340px;
+}
+
+#scanner video {
+    border-radius: 8px;
+}
+
+#isbnMessage {
+    margin: 0.75rem 0 0;
+}
+
 /* Admin review queue */
 
 .pending-list {

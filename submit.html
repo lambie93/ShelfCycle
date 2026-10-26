@@ -6,6 +6,7 @@
     <title>Suggest a Book | ShelfCycle</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="catalog.css">
+    <script src="https://unpkg.com/html5-qrcode@2.3.8/html5-qrcode.min.js" defer></script>
     <script src="submit.js" defer></script>
 </head>
 <body>
@@ -24,6 +25,18 @@
             <span class="eyebrow">KEEP STORIES MOVING</span>
             <h1>Suggest a book</h1>
             <p>Something missing from our shelves? Suggest it here — an admin will review it before it appears in the catalog.</p>
+
+            <div class="isbn-lookup">
+                <p><strong>Have the book handy?</strong> Scan its barcode or type the ISBN and we'll fill in the details for you.</p>
+                <div class="isbn-controls">
+                    <button type="button" id="scanButton" class="primary-button">Scan ISBN with camera</button>
+                    <span>or</span>
+                    <input type="text" id="isbnInput" inputmode="numeric" placeholder="Enter ISBN (e.g. 9780140328721)" maxlength="17">
+                    <button type="button" id="lookupButton" class="secondary-button">Look up</button>
+                </div>
+                <div id="scanner" hidden></div>
+                <p id="isbnMessage" role="status"></p>
+            </div>
 
             <form id="bookForm" class="book-form">
                 <label>
