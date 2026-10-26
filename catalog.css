@@ -196,9 +196,15 @@ footer {
     width: 180px;
 }
 
+.slider-control > span {
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+    min-height: 2.45rem;
+}
+
 .slider-control span input[type="number"] {
     width: 80px;
-    margin-left: 0.35rem;
 }
 
 .filter-control input[type="number"] {
