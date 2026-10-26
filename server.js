@@ -85,7 +85,7 @@ app.post("/api/books", (req, res) => {
         exchangeType: EXCHANGE_TYPES.includes(exchangeType) ? exchangeType : "Lend",
         status: "pending",
     };
-    if (isbnClean) book.isbn = isbnClean;
+    if (isbnClean) book.isbns = [isbnClean];
     books.push(book);
     writeBooks(books);
     res.status(201).json({ message: "Book submitted for review.", book });

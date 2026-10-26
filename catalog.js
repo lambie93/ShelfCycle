@@ -1,6 +1,7 @@
 const state = {
     books: [],
     search: "",
+    isbnTitle: "",
     sort: "title",
     language: "",
     minPages: 1,
@@ -44,8 +45,9 @@ function getVisibleBooks() {
         .filter((b) => {
             if (query) {
                 const matchesText = [b.title, b.author, b.genre].some((f) => f.toLowerCase().includes(query));
-                const matchesIsbn = isbnQuery.length > 0 && b.isbn && b.isbn.toLowerCase().includes(isbnQuery);
-                if (!matchesText && !matchesIsbn) return false;
+                const matchesIsbn = isbnQuery.length > 0 && (b.isbns || []).some((i) => i.toLowerCase().includes(isbnQuery));
+                const matchesResolved = state.isbnTitle !== "" && b.title.toLowerCase().includes(state.isbnTitle);
+                if (!matchesText && !matchesIsbn && !matchesResolved) return false;
             }
             if (b.pages < state.minPages) return false;
             if (b.pages > state.maxPages) return false;
@@ -110,6 +112,8 @@ function bindNumberInput(input, apply) {
 
 function resetControls() {
     state.search = "";
+    state.isbnTitle = "";
+    isbnLookupToken += 1;
     state.sort = "title";
     state.language = "";
     state.minPages = 1;
@@ -125,7 +129,33 @@ function resetControls() {
     render();
 }
 
-els.search.addEventListener("input", () => { state.search = els.search.value; render(); });
+let isbnLookupToken = 0;
+let isbnLookupTimer = null;
+
+function scheduleIsbnLookup() {
+    clearTimeout(isbnLookupTimer);
+    state.isbnTitle = "";
+    const isbn = state.search.replace(/[^0-9Xx]/g, "");
+    if (!/^(\d{9}[\dXx]|\d{13})$/.test(isbn)) return;
+    const localHit = state.books.some((b) =>
+        (b.isbns || []).some((i) => i.toLowerCase() === isbn.toLowerCase())
+    );
+    if (localHit) return;
+
+    const token = ++isbnLookupToken;
+    isbnLookupTimer = setTimeout(async () => {
+        try {
+            const res = await fetch(`https://openlibrary.org/isbn/${isbn}.json`);
+            if (!res.ok) return;
+            const book = await res.json();
+            if (token !== isbnLookupToken) return;
+            state.isbnTitle = (book.title || "").toLowerCase().replace(/\(.*?\)/g, "").trim();
+            render();
+        } catch { /* offline or lookup failed — leave results as-is */ }
+    }, 400);
+}
+
+els.search.addEventListener("input", () => { state.search = els.search.value; render(); scheduleIsbnLookup(); });
 els.sort.addEventListener("change", () => { state.sort = els.sort.value; render(); });
 els.language.addEventListener("change", () => { state.language = els.language.value; render(); });
 els.minPages.addEventListener("input", () => { state.minPages = Number(els.minPages.value); updateControls(); render(); });
