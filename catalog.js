@@ -68,7 +68,7 @@ function render() {
                 <span class="rating-label">${b.rating > 0 ? `${b.rating.toFixed(1)} (${b.ratingCount})` : ""}</span>
             </div>
             <div class="rate-widget" data-id="${b.id}">
-                Rate it:
+                Rate
                 ${[1, 2, 3, 4, 5].map((n) => `<button type="button" data-stars="${n}" aria-label="Rate ${n} stars">★</button>`).join("")}
             </div>
         </article>
