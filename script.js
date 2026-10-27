@@ -1,5 +1,5 @@
-const loginTab = document.getElementById("loginTab");
-const signupTab = document.getElementById("signupTab");
+const loginCard = document.getElementById("loginCard");
+const signupCard = document.getElementById("signupCard");
 const loginForm = document.getElementById("loginForm");
 const signupForm = document.getElementById("signupForm");
 const welcomeBox = document.getElementById("welcomeBox");
@@ -11,31 +11,20 @@ function getToken() {
     return localStorage.getItem("shelfcycleToken");
 }
 
-function showTab(which) {
-    const isLogin = which === "login";
-    loginTab.classList.toggle("active", isLogin);
-    signupTab.classList.toggle("active", !isLogin);
-    loginForm.hidden = !isLogin;
-    signupForm.hidden = isLogin;
+function showWelcome(username) {
+    loginCard.hidden = true;
+    signupCard.hidden = true;
+    welcomeBox.hidden = false;
+    welcomeName.textContent = username;
     authMessage.textContent = "";
 }
 
-function showWelcome(username) {
-    loginForm.hidden = true;
-    signupForm.hidden = true;
-    document.querySelector(".auth-tabs").hidden = true;
-    welcomeBox.hidden = false;
-    welcomeName.textContent = username;
-}
-
 function showForms() {
-    document.querySelector(".auth-tabs").hidden = false;
+    loginCard.hidden = false;
+    signupCard.hidden = false;
     welcomeBox.hidden = true;
-    showTab("login");
+    authMessage.textContent = "";
 }
-
-loginTab.addEventListener("click", () => showTab("login"));
-signupTab.addEventListener("click", () => showTab("signup"));
 
 async function submitAuth(url, form) {
     authMessage.textContent = "";

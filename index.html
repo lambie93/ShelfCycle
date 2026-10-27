@@ -31,29 +31,29 @@
             <div class="home-tagline">
                 <p>Good books deserve<br>another chapter.</p>
             </div>
-            <div class="auth-card" id="authCard">
-                <div class="auth-tabs">
-                    <button type="button" id="loginTab" class="active">Log in</button>
-                    <button type="button" id="signupTab">Sign up</button>
-                </div>
+            <div class="auth-card" id="loginCard">
+                <h2>Log In</h2>
                 <form id="loginForm" class="auth-form">
                     <input type="text" name="username" placeholder="Username" required autocomplete="username">
                     <input type="password" name="password" placeholder="Password" required autocomplete="current-password">
                     <button type="submit" class="primary-button">Log in</button>
                 </form>
-                <form id="signupForm" class="auth-form" hidden>
+            </div>
+            <div class="auth-card" id="signupCard">
+                <h2>Sign Up</h2>
+                <form id="signupForm" class="auth-form">
                     <input type="text" name="username" placeholder="Choose a username" required autocomplete="username">
                     <input type="password" name="password" placeholder="Choose a password (4+ characters)" required autocomplete="new-password">
                     <button type="submit" class="primary-button">Create account</button>
                 </form>
-                <div id="welcomeBox" hidden>
-                    <p>Welcome back, <strong id="welcomeName"></strong>!</p>
-                    <a href="profile.html" class="primary-button">Go to your profile</a>
-                    <button type="button" id="welcomeLogout">Log out</button>
-                </div>
-                <p id="authMessage" role="status"></p>
+            </div>
+            <div class="auth-card" id="welcomeBox" hidden>
+                <p>Welcome back, <strong id="welcomeName"></strong>!</p>
+                <a href="profile.html" class="primary-button">Go to your profile</a>
+                <button type="button" id="welcomeLogout">Log out</button>
             </div>
         </div>
+        <p id="authMessage" role="status"></p>
     </main>
     <footer>
         <p>&copy; 2026 ShelfCycle. All rights reserved.</p>

@@ -537,6 +537,58 @@ footer {
     font-family: inherit;
 }
 
+/* Maps page */
+
+.map-section {
+    margin-top: 1.5rem;
+}
+
+#map {
+    height: 480px;
+    border-radius: 12px;
+    border: 1px solid #e5ddd0;
+    margin-top: 1rem;
+}
+
+.map-legend {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    flex-wrap: wrap;
+    margin-top: 0.75rem;
+    font-size: 0.9rem;
+    color: #5c4f41;
+}
+
+.legend-dot {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    margin-right: 0.35rem;
+}
+
+.legend-public {
+    background: #428a9b;
+}
+
+.legend-little {
+    background: #5b7c42;
+}
+
+.legend-outline {
+    display: inline-block;
+    width: 22px;
+    height: 0;
+    border-top: 3px solid #428a9b;
+    margin-right: 0.35rem;
+}
+
+#mapStatus {
+    margin: 1rem 0;
+    font-weight: bold;
+}
+
 /* Profile page */
 
 .profile-header {

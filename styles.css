@@ -35,10 +35,13 @@ nav a.active {
 .home-split {
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    gap: 3rem;
+    gap: 2rem;
     flex-wrap: wrap;
     padding: 3rem 2rem;
+}
+
+.home-tagline {
+    flex: 1;
 }
 
 .home-tagline p {
@@ -56,26 +59,9 @@ nav a.active {
     max-width: 100%;
 }
 
-.auth-tabs {
-    display: flex;
-    gap: 0.5rem;
-    margin-bottom: 1rem;
-}
-
-.auth-tabs button {
-    flex: 1;
-    padding: 0.5rem;
-    border: none;
-    border-radius: 999px;
-    background: #efe6d8;
-    cursor: pointer;
-    font-family: inherit;
-    font-weight: bold;
-}
-
-.auth-tabs button.active {
-    background: #428a9b;
-    color: #fff;
+.auth-card h2 {
+    margin: 0 0 0.75rem;
+    font-size: 1.3rem;
 }
 
 .auth-form {
@@ -95,6 +81,7 @@ nav a.active {
 
 .auth-form .primary-button {
     margin-top: 0.25rem;
+    background: #5b7c42;
 }
 
 #authMessage {
