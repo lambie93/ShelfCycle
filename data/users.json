@@ -1,31 +1,3 @@
 {
-  "users": [
-    {
-      "id": 1,
-      "username": "tester",
-      "salt": "568a79c7d31e75b075a99d99adb8d12b",
-      "passwordHash": "119078c71f7877c92a14b56747dde88bc8902d432d37568bc2758f0e42029c90aa2cfa2e4ef6162fd31bf4bd7b222c6bed9b26a9621bfcc8bf832dcb3d1b743f",
-      "token": "8476aeea5bb79942e9fe83e70569e22ef5ad58093cfea78c4deebb3058a2aa21",
-      "joinedAt": "2026-10-27",
-      "favoriteBook": "",
-      "challenge": {
-        "year": 2026,
-        "goal": 12
-      },
-      "lists": {
-        "wantToRead": [],
-        "currentlyReading": [
-          {
-            "bookId": 8,
-            "pagesRead": 500,
-            "totalPages": 500
-          }
-        ],
-        "finished": [],
-        "didNotFinish": [],
-        "favorites": [],
-        "assigned": []
-      }
-    }
-  ]
+  "users": []
 }
