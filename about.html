@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About | ShelfCycle</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="catalog.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <script src="footer.js" defer></script>
+</head>
+<body>
+    <header>
+        <a href="index.html"><img src="images/ShelfCycle_logo-removebg-preview.png" alt="shelf cycle logo" width="150"></a>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="catalog.html">Catalog</a>
+            <a href="swaps.html">Swaps</a>
+            <a href="donate.html">Donate</a>
+            <a href="maps.html">Maps</a>
+            <a href="about.html" class="active">About</a>
+            <a href="profile.html" class="profile-icon" aria-label="Your profile">
+                <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 4-6 8-6s8 2 8 6"/></svg>
+            </a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="form-section" style="max-width: 900px;">
+            <span class="eyebrow">OUR STORY</span>
+            <h1>About ShelfCycle</h1>
+            <p>ShelfCycle is a community bookshelf. We believe good books deserve another chapter — instead of gathering dust, they should move from reader to reader. Browse the catalog, rate what you've read, suggest what's missing, and pass your own books along through swaps, lends, and school donations.</p>
+
+            <h2 class="about-heading">What you can do here</h2>
+            <div class="shelf-grid">
+                <article class="mini-book">
+                    <strong>Browse the catalog</strong>
+                    <span class="meta">Search by title, author, or ISBN and filter by language, length, rating, and publication year.</span>
+                </article>
+                <article class="mini-book">
+                    <strong>Rate &amp; suggest</strong>
+                    <span class="meta">Give books a star rating, and suggest anything missing — scan the barcode and we'll fill in the details for you.</span>
+                </article>
+                <article class="mini-book">
+                    <strong>Swap &amp; lend</strong>
+                    <span class="meta">List a book you own to swap or lend, and request books from other members.</span>
+                </article>
+                <article class="mini-book">
+                    <strong>Donate to schools</strong>
+                    <span class="meta">Send a book to a classroom and see it join the public donations list.</span>
+                </article>
+                <article class="mini-book">
+                    <strong>Track your reading</strong>
+                    <span class="meta">Your profile keeps your want-to-read, currently reading, finished, and did-not-finish shelves — plus a yearly reading challenge.</span>
+                </article>
+                <article class="mini-book">
+                    <strong>Find local libraries</strong>
+                    <span class="meta">The map shows every public library and Little Free Library inside New York's 18th congressional district.</span>
+                </article>
+            </div>
+
+            <h2 class="about-heading">How it works</h2>
+            <p>New book suggestions go to a short review queue before appearing in the catalog, which keeps the shelves tidy. Accounts are free — sign up on the home page to save lists, track progress, and join the swap shelf.</p>
+            <p>Book details come from the Open Library and library locations from OpenStreetMap, two wonderful open-data projects.</p>
+        </section>
+    </main>
+
+    <footer>
+        <p>Good books deserve another chapter.</p>
+        <button type="button" id="featureButton" class="feature-button">Suggest a feature</button>
+        <form id="featureForm" hidden>
+            <textarea name="text" rows="2" maxlength="1000" placeholder="What should ShelfCycle do next?" required></textarea>
+            <button type="submit">Send</button>
+        </form>
+        <p id="featureMessage" role="status"></p>
+        <p>&copy; 2026 ShelfCycle. All rights reserved.</p>
+    </footer>
+</body>
+</html>

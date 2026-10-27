@@ -558,6 +558,28 @@ app.post("/api/donations", requireUser, (req, res) => {
     res.status(201).json({ donation });
 });
 
+/* ---------------- Feature requests ---------------- */
+
+const FEATURES_FILE = path.join(__dirname, "data", "features.json");
+
+function readFeatures() { return readJsonFile(FEATURES_FILE, { features: [] }).features; }
+function writeFeatures(features) { fs.writeFileSync(FEATURES_FILE, JSON.stringify({ features }, null, 2) + "\n"); }
+
+app.post("/api/features", (req, res) => {
+    const text = String((req.body || {}).text || "").trim();
+    if (text.length < 3) {
+        return res.status(400).json({ error: "Please describe the feature." });
+    }
+    const features = readFeatures();
+    features.push({
+        id: features.length ? Math.max(...features.map((f) => f.id)) + 1 : 1,
+        text: text.slice(0, 1000),
+        createdAt: today(),
+    });
+    writeFeatures(features);
+    res.status(201).json({ message: "Thanks for the suggestion!" });
+});
+
 // Old location of the catalog page — redirect for stale bookmarks.
 app.get("/catalog/catalog.html", (req, res) => res.redirect("/catalog.html"));
 

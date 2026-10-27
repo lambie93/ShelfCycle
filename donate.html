@@ -10,6 +10,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <script src="donate.js" defer></script>
+    <script src="footer.js" defer></script>
 </head>
 <body>
     <header>
@@ -61,6 +62,13 @@
     </main>
 
     <footer>
+        <p>Good books deserve another chapter.</p>
+        <button type="button" id="featureButton" class="feature-button">Suggest a feature</button>
+        <form id="featureForm" hidden>
+            <textarea name="text" rows="2" maxlength="1000" placeholder="What should ShelfCycle do next?" required></textarea>
+            <button type="submit">Send</button>
+        </form>
+        <p id="featureMessage" role="status"></p>
         <p>&copy; 2026 ShelfCycle. All rights reserved.</p>
     </footer>
 </body>
