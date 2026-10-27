@@ -8,7 +8,6 @@ const scannerBox = document.getElementById("scanner");
 const scannerVideo = document.getElementById("scannerVideo");
 const photoButton = document.getElementById("photoButton");
 const barcodePhoto = document.getElementById("barcodePhoto");
-let codeReader = null;
 
 const LANGUAGE_NAMES = {
     eng: "English", spa: "Spanish", fre: "French", ger: "German",
@@ -78,68 +77,98 @@ async function lookupIsbn(rawIsbn) {
     }
 }
 
-function isbnHints() {
-    return new Map([
-        [ZXing.DecodeHintType.POSSIBLE_FORMATS, [
-            ZXing.BarcodeFormat.EAN_13,
-            ZXing.BarcodeFormat.EAN_8,
-            ZXing.BarcodeFormat.UPC_A,
-            ZXing.BarcodeFormat.UPC_E,
-        ]],
-        [ZXing.DecodeHintType.TRY_HARDER, true],
-    ]);
+const BARCODE_FORMATS = ["EAN-13", "EAN-8", "UPC-A", "UPC-E"];
+const DECODER_URL = "https://cdn.jsdelivr.net/npm/zxing-wasm@3.1.6/dist/es/reader/index.js";
+const DECODER_WASM_URL = "https://cdn.jsdelivr.net/npm/zxing-wasm@3.1.6/dist/reader/zxing_reader.wasm";
+
+let decoderPromise = null;
+let mediaStream = null;
+let scanTimer = null;
+
+function loadDecoder() {
+    if (!decoderPromise) {
+        decoderPromise = import(DECODER_URL).then((mod) => {
+            mod.setZXingModuleOverrides({ locateFile: () => DECODER_WASM_URL });
+            return mod;
+        });
+    }
+    return decoderPromise;
+}
+
+function onScanned(decoded) {
+    stopScanner();
+    isbnInput.value = decoded;
+    lookupIsbn(decoded);
 }
 
 function stopScanner() {
-    if (codeReader) {
-        try { codeReader.reset(); } catch { /* ignore */ }
-        codeReader = null;
+    if (scanTimer) {
+        clearInterval(scanTimer);
+        scanTimer = null;
+    }
+    if (mediaStream) {
+        mediaStream.getTracks().forEach((track) => track.stop());
+        mediaStream = null;
+        scannerVideo.srcObject = null;
     }
     scannerBox.hidden = true;
     scanButton.textContent = "Scan ISBN with camera";
 }
 
+async function openCamera() {
+    try {
+        return await navigator.mediaDevices.getUserMedia({
+            audio: false,
+            video: { facingMode: "environment", width: { ideal: 1920 }, height: { ideal: 1080 } },
+        });
+    } catch (e) {
+        if (e && (e.name === "OverconstrainedError" || e.name === "NotFoundError")) {
+            return navigator.mediaDevices.getUserMedia({ audio: false, video: true });
+        }
+        throw e;
+    }
+}
+
 async function toggleScanner() {
-    if (codeReader) {
+    if (mediaStream) {
         stopScanner();
         return;
     }
-    if (!window.isSecureContext) {
-        setIsbnMessage("Camera scanning needs a secure (HTTPS) connection. Type the ISBN instead.", "form-error");
-        return;
-    }
-    if (typeof ZXing === "undefined") {
-        setIsbnMessage("The scanner failed to load. Type the ISBN instead.", "form-error");
+    if (!window.isSecureContext || !navigator.mediaDevices) {
+        setIsbnMessage("Camera scanning needs a secure (HTTPS) connection. Photograph the barcode or type the ISBN instead.", "form-error");
         return;
     }
 
-    scannerBox.hidden = false;
-    codeReader = new ZXing.BrowserMultiFormatReader(isbnHints(), 300);
-    let attempts = 0;
+    setIsbnMessage("Starting the camera...");
     try {
-        await codeReader.decodeFromConstraints(
-            { video: { facingMode: "environment", width: { ideal: 1280 }, height: { ideal: 720 } } },
-            scannerVideo,
-            (result, err) => {
-                if (result) {
-                    const decoded = result.getText();
-                    stopScanner();
-                    isbnInput.value = decoded;
-                    lookupIsbn(decoded);
-                    return;
-                }
-                attempts += 1;
-                if (err && typeof ZXing.NotFoundException !== "undefined" && !(err instanceof ZXing.NotFoundException)) {
-                    setIsbnMessage("Barcode partly detected — hold it steady, square-on, about 15–25 cm away.");
-                } else if (attempts % 20 === 0) {
-                    setIsbnMessage(`Still scanning (attempt ${attempts}). Try brighter light and fill more of the view with the barcode.`);
-                }
-            }
-        );
+        const { readBarcodesFromImageData } = await loadDecoder();
+        mediaStream = await openCamera();
+        scannerBox.hidden = false;
+        scannerVideo.srcObject = mediaStream;
+        await scannerVideo.play();
+
+        const canvas = document.createElement("canvas");
+        const ctx = canvas.getContext("2d", { willReadFrequently: true });
+        scanTimer = setInterval(async () => {
+            if (scannerVideo.readyState < 2 || !scannerVideo.videoWidth) return;
+            canvas.width = scannerVideo.videoWidth;
+            canvas.height = scannerVideo.videoHeight;
+            ctx.drawImage(scannerVideo, 0, 0);
+            const frame = ctx.getImageData(0, 0, canvas.width, canvas.height);
+            try {
+                const results = await readBarcodesFromImageData(frame, {
+                    formats: BARCODE_FORMATS,
+                    tryHarder: true,
+                    maxNumberOfSymbols: 1,
+                });
+                if (results.length) onScanned(results[0].text);
+            } catch { /* keep scanning */ }
+        }, 400);
+
         scanButton.textContent = "Stop scanning";
         setIsbnMessage("Scanning — point the camera at the book's barcode.");
     } catch (e) {
-        setIsbnMessage(`Camera error: ${(e && e.message) || e}. You can photograph the barcode or type the ISBN instead.`, "form-error");
+        setIsbnMessage(`Camera error: ${(e && e.name) || ""} ${(e && e.message) || e}. You can photograph the barcode or type the ISBN instead.`, "form-error");
         stopScanner();
     }
 }
@@ -149,22 +178,18 @@ barcodePhoto.addEventListener("change", async () => {
     const file = barcodePhoto.files && barcodePhoto.files[0];
     barcodePhoto.value = "";
     if (!file) return;
-    if (typeof ZXing === "undefined") {
-        setIsbnMessage("The scanner failed to load. Type the ISBN instead.", "form-error");
-        return;
-    }
     setIsbnMessage("Reading the barcode from your photo...");
-    const url = URL.createObjectURL(file);
     try {
-        const reader = new ZXing.BrowserMultiFormatReader(isbnHints());
-        const result = await reader.decodeFromImageUrl(url);
-        const decoded = result.getText();
-        isbnInput.value = decoded;
-        lookupIsbn(decoded);
+        const { readBarcodesFromImageFile } = await loadDecoder();
+        const results = await readBarcodesFromImageFile(file, {
+            formats: BARCODE_FORMATS,
+            tryHarder: true,
+            maxNumberOfSymbols: 1,
+        });
+        if (!results.length) throw new Error("no barcode found");
+        onScanned(results[0].text);
     } catch {
         setIsbnMessage("Couldn't read a barcode in that photo. Retake it sharp, square-on, and well lit — or type the ISBN.", "form-error");
-    } finally {
-        URL.revokeObjectURL(url);
     }
 });
 
