@@ -5,9 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ShelfCycle</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="catalog.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <script src="script.js" defer></script>
 </head>
 <body>
     <header>
@@ -15,12 +17,43 @@
     <nav>
         <a href="index.html" class="active">Home</a>
         <a href="catalog.html">Catalog</a>
+        <a href="swaps.html">Swaps</a>
+        <a href="donate.html">Donate</a>
         <a href="maps.html">Maps</a>
         <a href="about.html">About</a>
+        <a href="profile.html" class="profile-icon" aria-label="Your profile">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 4-6 8-6s8 2 8 6"/></svg>
+        </a>
     </nav>
     </header>
     <main>
-        <p>Good books deserve another chapter.</p>
+        <div class="home-split">
+            <div class="home-tagline">
+                <p>Good books deserve<br>another chapter.</p>
+            </div>
+            <div class="auth-card" id="authCard">
+                <div class="auth-tabs">
+                    <button type="button" id="loginTab" class="active">Log in</button>
+                    <button type="button" id="signupTab">Sign up</button>
+                </div>
+                <form id="loginForm" class="auth-form">
+                    <input type="text" name="username" placeholder="Username" required autocomplete="username">
+                    <input type="password" name="password" placeholder="Password" required autocomplete="current-password">
+                    <button type="submit" class="primary-button">Log in</button>
+                </form>
+                <form id="signupForm" class="auth-form" hidden>
+                    <input type="text" name="username" placeholder="Choose a username" required autocomplete="username">
+                    <input type="password" name="password" placeholder="Choose a password (4+ characters)" required autocomplete="new-password">
+                    <button type="submit" class="primary-button">Create account</button>
+                </form>
+                <div id="welcomeBox" hidden>
+                    <p>Welcome back, <strong id="welcomeName"></strong>!</p>
+                    <a href="profile.html" class="primary-button">Go to your profile</a>
+                    <button type="button" id="welcomeLogout">Log out</button>
+                </div>
+                <p id="authMessage" role="status"></p>
+            </div>
+        </div>
     </main>
     <footer>
         <p>&copy; 2026 ShelfCycle. All rights reserved.</p>

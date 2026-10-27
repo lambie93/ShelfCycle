@@ -536,3 +536,234 @@ footer {
     font-size: 1rem;
     font-family: inherit;
 }
+
+/* Profile page */
+
+.profile-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.profile-header h1 {
+    margin: 0;
+}
+
+.profile-header p {
+    margin: 0.25rem 0 0;
+    color: #5c4f41;
+}
+
+.profile-card {
+    margin-top: 1.25rem;
+}
+
+.profile-card h2 {
+    margin: 0 0 0.75rem;
+    font-size: 1.2rem;
+}
+
+.favorite-book-row {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.favorite-book-row input {
+    flex: 1;
+    min-width: 200px;
+    padding: 0.6rem 0.75rem;
+    border: 1px solid #e5ddd0;
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 1rem;
+    background: #faf6ef;
+}
+
+.favorite-book-row .primary-button {
+    margin-top: 0;
+}
+
+.challenge-bar,
+.progress-bar {
+    background: #efe6d8;
+    border-radius: 999px;
+    height: 12px;
+    overflow: hidden;
+}
+
+.challenge-fill,
+.progress-fill {
+    background: #428a9b;
+    height: 100%;
+    border-radius: 999px;
+    transition: width 0.3s;
+}
+
+#challengeText {
+    margin: 0.5rem 0 0.75rem;
+}
+
+.profile-shelf {
+    margin-top: 2rem;
+}
+
+.profile-shelf h2 {
+    margin-bottom: 0.75rem;
+}
+
+.shelf-grid,
+.exchange-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 1rem;
+}
+
+.exchange-grid {
+    margin-top: 1.5rem;
+}
+
+.mini-book {
+    background: #fff;
+    border: 1px solid #e5ddd0;
+    border-radius: 12px;
+    padding: 1rem 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+
+.mini-book .author {
+    color: #5c4f41;
+    font-style: italic;
+    margin: 0;
+}
+
+.mini-book .meta {
+    font-size: 0.85rem;
+    color: #5c4f41;
+    margin: 0;
+}
+
+.mini-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-top: 0.25rem;
+}
+
+.mini-actions .primary-button {
+    margin-top: 0;
+    padding: 0.4rem 1rem;
+    font-size: 0.85rem;
+}
+
+.small-button {
+    border: 1px solid #428a9b;
+    background: #fff;
+    color: #428a9b;
+    border-radius: 999px;
+    padding: 0.3rem 0.8rem;
+    font-family: inherit;
+    font-size: 0.85rem;
+    cursor: pointer;
+}
+
+.small-button:hover {
+    background: #428a9b;
+    color: #fff;
+}
+
+.progress-inputs {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.9rem;
+}
+
+.progress-inputs input {
+    width: 70px;
+    padding: 0.3rem 0.4rem;
+    border: 1px solid #e5ddd0;
+    border-radius: 8px;
+    font-family: inherit;
+    background: #faf6ef;
+}
+
+.shelf-empty {
+    color: #5c4f41;
+}
+
+.finished-date {
+    font-size: 0.85rem;
+    color: #5c4f41;
+}
+
+.badge {
+    align-self: flex-start;
+    padding: 0.15rem 0.6rem;
+    border-radius: 999px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    color: #fff;
+}
+
+.badge-swap {
+    background: #428a9b;
+}
+
+.badge-lend {
+    background: #a0612d;
+}
+
+.list-form-row {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.list-form-row select {
+    padding: 0.5rem;
+    border: 1px solid #e5ddd0;
+    border-radius: 8px;
+    font-family: inherit;
+    background: #faf6ef;
+    max-width: 100%;
+}
+
+.list-form-row select#listBookSelect {
+    flex: 1;
+    min-width: 220px;
+}
+
+.list-form-row .primary-button {
+    margin-top: 0;
+}
+
+/* Catalog card list buttons */
+
+.card-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-top: 0.5rem;
+}
+
+.card-actions button {
+    border: 1px solid #e5ddd0;
+    background: #faf6ef;
+    border-radius: 999px;
+    padding: 0.25rem 0.7rem;
+    font-family: inherit;
+    font-size: 0.8rem;
+    cursor: pointer;
+}
+
+.card-actions button:hover {
+    border-color: #428a9b;
+    color: #428a9b;
+}

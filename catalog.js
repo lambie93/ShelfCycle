@@ -1,3 +1,5 @@
+const token = localStorage.getItem("shelfcycleToken");
+
 const state = {
     books: [],
     search: "",
@@ -74,6 +76,12 @@ function render() {
                 Rate:
                 ${[1, 2, 3, 4, 5].map((n) => `<button type="button" data-stars="${n}" aria-label="Rate ${n} stars">★</button>`).join("")}
             </div>
+            ${token ? `
+            <div class="card-actions" data-id="${b.id}">
+                <button type="button" data-list="wantToRead">+ Want to read</button>
+                <button type="button" data-list="favorites">♥ Favorite</button>
+                <button type="button" data-list="assigned">+ Assign to me</button>
+            </div>` : ""}
         </article>
     `).join("");
 
@@ -169,6 +177,29 @@ els.clearFilters.addEventListener("click", resetControls);
 els.reset.addEventListener("click", resetControls);
 
 els.grid.addEventListener("click", async (event) => {
+    const listButton = event.target.closest("button[data-list]");
+    if (listButton) {
+        const id = listButton.closest(".card-actions").dataset.id;
+        try {
+            const res = await fetch("/api/me/lists", {
+                method: "POST",
+                headers: { Authorization: `Bearer ${token}`, "Content-Type": "application/json" },
+                body: JSON.stringify({ list: listButton.dataset.list, bookId: Number(id) }),
+            });
+            if (res.status === 401) {
+                localStorage.removeItem("shelfcycleToken");
+                alert("Your session expired — log in again on the home page.");
+                return;
+            }
+            if (!res.ok) throw new Error();
+            const original = listButton.textContent;
+            listButton.textContent = "✓ Added";
+            setTimeout(() => { listButton.textContent = original; }, 1500);
+        } catch {
+            alert("Could not add the book. Please try again.");
+        }
+        return;
+    }
     const button = event.target.closest("button[data-stars]");
     if (!button) return;
     const widget = button.closest(".rate-widget");

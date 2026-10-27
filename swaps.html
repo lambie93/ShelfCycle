@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Swap &amp; Lend | ShelfCycle</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="catalog.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <script src="swaps.js" defer></script>
+</head>
+<body>
+    <header>
+        <a href="index.html"><img src="images/ShelfCycle_logo-removebg-preview.png" alt="shelf cycle logo" width="150"></a>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="catalog.html">Catalog</a>
+            <a href="swaps.html" class="active">Swaps</a>
+            <a href="donate.html">Donate</a>
+            <a href="maps.html">Maps</a>
+            <a href="about.html">About</a>
+            <a href="profile.html" class="profile-icon" aria-label="Your profile">
+                <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 4-6 8-6s8 2 8 6"/></svg>
+            </a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="form-section" style="max-width: 900px;">
+            <h1>Swap &amp; lend</h1>
+            <p>List a book you own to swap or lend out, or request one from another member.</p>
+
+            <div class="toolbar-card" id="listFormCard" hidden>
+                <h2>List one of your books</h2>
+                <div class="list-form-row">
+                    <select id="listBookSelect"></select>
+                    <select id="listTypeSelect">
+                        <option value="swap">Swap</option>
+                        <option value="lend">Lend</option>
+                    </select>
+                    <button type="button" id="listBookButton" class="primary-button">List it</button>
+                </div>
+            </div>
+            <p id="loginHint" class="shelf-empty" hidden>Log in on the <a href="index.html">home page</a> to list or request books.</p>
+
+            <p id="swapsMessage" role="status"></p>
+            <div class="exchange-grid" id="exchangeGrid"></div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 ShelfCycle. All rights reserved.</p>
+    </footer>
+</body>
+</html>

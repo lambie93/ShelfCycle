@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Profile | ShelfCycle</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="catalog.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <script src="profile.js" defer></script>
+</head>
+<body>
+    <header>
+        <a href="index.html"><img src="images/ShelfCycle_logo-removebg-preview.png" alt="shelf cycle logo" width="150"></a>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="catalog.html">Catalog</a>
+            <a href="swaps.html">Swaps</a>
+            <a href="donate.html">Donate</a>
+            <a href="maps.html">Maps</a>
+            <a href="about.html">About</a>
+            <a href="profile.html" class="profile-icon active" aria-label="Your profile">
+                <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 4-6 8-6s8 2 8 6"/></svg>
+            </a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="profile-header">
+            <div>
+                <h1 id="profileName">Your profile</h1>
+                <p id="profileSince"></p>
+            </div>
+            <button type="button" id="logoutButton">Log out</button>
+        </section>
+
+        <section class="toolbar-card profile-card">
+            <h2>Favorite book</h2>
+            <div class="favorite-book-row">
+                <input type="text" id="favoriteBookInput" placeholder="Your all-time favorite book" maxlength="200">
+                <button type="button" id="saveFavorite" class="primary-button">Save</button>
+            </div>
+        </section>
+
+        <section class="toolbar-card profile-card">
+            <h2 id="challengeTitle">Reading challenge</h2>
+            <div class="challenge-bar"><div class="challenge-fill" id="challengeFill"></div></div>
+            <p id="challengeText"></p>
+            <div class="favorite-book-row">
+                <input type="number" id="challengeGoalInput" min="1" max="500" placeholder="Yearly goal">
+                <button type="button" id="saveGoal" class="primary-button">Set goal</button>
+            </div>
+        </section>
+
+        <section class="profile-shelf" id="shelf-currentlyReading">
+            <h2>Currently reading</h2>
+            <div class="shelf-grid" id="list-currentlyReading"></div>
+        </section>
+
+        <section class="profile-shelf" id="shelf-wantToRead">
+            <h2>Want to read</h2>
+            <div class="shelf-grid" id="list-wantToRead"></div>
+        </section>
+
+        <section class="profile-shelf" id="shelf-assigned">
+            <h2>Assigned books</h2>
+            <div class="shelf-grid" id="list-assigned"></div>
+        </section>
+
+        <section class="profile-shelf" id="shelf-favorites">
+            <h2>Favorited books</h2>
+            <div class="shelf-grid" id="list-favorites"></div>
+        </section>
+
+        <section class="profile-shelf" id="shelf-didNotFinish">
+            <h2>Did not finish</h2>
+            <div class="shelf-grid" id="list-didNotFinish"></div>
+        </section>
+
+        <section class="profile-shelf" id="shelf-finished">
+            <h2>Finished</h2>
+            <div class="shelf-grid" id="list-finished"></div>
+        </section>
+
+        <p id="profileMessage" role="status"></p>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 ShelfCycle. All rights reserved.</p>
+    </footer>
+</body>
+</html>
