@@ -30,18 +30,17 @@
 
     <main>
         <section class="form-section">
-            <span class="eyebrow">KEEP STORIES MOVING</span>
-            <h1>Suggest a book</h1>
+            <h1>Suggest A Book</h1>
             <p>Something missing from our shelves? Suggest it here — an admin will review it before it appears in the catalog.</p>
 
             <div class="isbn-lookup">
                 <p><strong>Have the book handy?</strong> Scan its barcode or type the ISBN and we'll fill in the details for you.</p>
                 <div class="isbn-controls">
-                    <button type="button" id="scanButton" class="primary-button">Scan ISBN with camera</button>
-                    <button type="button" id="photoButton" class="secondary-button">Photograph barcode</button>
+                    <button type="button" id="scanButton" class="primary-button">Scan Barcode</button>
+                    <button type="button" id="photoButton" class="secondary-button">Photograph Barcode</button>
                     <input type="file" id="barcodePhoto" accept="image/*" capture="environment" hidden>
                     <span>or</span>
-                    <input type="text" id="isbnInput" inputmode="numeric" placeholder="Enter ISBN (e.g. 9780140328721)" maxlength="17">
+                    <input type="text" id="isbnInput" inputmode="numeric" placeholder="Enter ISBN" maxlength="17">
                     <button type="button" id="lookupButton" class="secondary-button">Look up</button>
                 </div>
                 <div id="scanner" hidden><video id="scannerVideo" muted playsinline></video></div>
@@ -79,17 +78,6 @@
                 <label>
                     Publication year *
                     <input type="number" name="year" min="0" required>
-                </label>
-                <label>
-                    Your rating
-                    <select name="rating">
-                        <option value="">No rating</option>
-                        <option value="1">★</option>
-                        <option value="2">★★</option>
-                        <option value="3">★★★</option>
-                        <option value="4">★★★★</option>
-                        <option value="5">★★★★★</option>
-                    </select>
                 </label>
                 <button type="submit" class="primary-button">Submit for review</button>
                 <p id="formMessage" role="status"></p>

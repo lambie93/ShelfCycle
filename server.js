@@ -48,7 +48,7 @@ app.get("/api/books", (req, res) => {
 
 // Public: suggest a new book (goes to the pending queue).
 app.post("/api/books", (req, res) => {
-    const { title, author, genre, pages, language, year, rating, exchangeType, isbn } = req.body || {};
+    const { title, author, genre, pages, language, year, exchangeType, isbn } = req.body || {};
 
     if (!title || !title.trim() || !author || !author.trim()) {
         return res.status(400).json({ error: "Title and author are required." });
@@ -66,11 +66,6 @@ app.post("/api/books", (req, res) => {
     if (!Number.isInteger(yearNum) || yearNum < 0 || yearNum > currentYear) {
         return res.status(400).json({ error: `Year must be between 0 and ${currentYear}.` });
     }
-    let ratingNum = Number(rating);
-    if (!Number.isFinite(ratingNum) || ratingNum < 1 || ratingNum > 5) {
-        ratingNum = 0; // unrated
-    }
-
     const books = readBooks();
     const book = {
         id: books.length ? Math.max(...books.map((b) => b.id)) + 1 : 1,
@@ -80,8 +75,8 @@ app.post("/api/books", (req, res) => {
         pages: pagesNum,
         language: (language || "English").trim(),
         year: yearNum,
-        rating: ratingNum,
-        ratingCount: ratingNum > 0 ? 1 : 0,
+        rating: 0,
+        ratingCount: 0,
         exchangeType: EXCHANGE_TYPES.includes(exchangeType) ? exchangeType : "Lend",
         status: "pending",
     };

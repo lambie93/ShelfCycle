@@ -214,7 +214,6 @@ form.addEventListener("submit", async (event) => {
         pages: Number(data.pages),
         language: data.language || "English",
         year: Number(data.year),
-        rating: data.rating ? Number(data.rating) : 0,
         isbn: isbnInput.value.replace(/[^0-9Xx]/g, ""),
     };
 

@@ -71,7 +71,6 @@ async function loadPending() {
                 <h3>${escapeHtml(b.title)}</h3>
                 <p class="author">${escapeHtml(b.author)}</p>
                 <p class="meta">${escapeHtml(b.genre)} · ${b.pages} pages · ${escapeHtml(b.language)} · ${b.year}</p>
-                <p class="meta">Suggested rating: ${b.rating > 0 ? "★".repeat(Math.round(b.rating)) : "none"}</p>
                 <div class="admin-actions" data-id="${b.id}">
                     <button type="button" class="primary-button" data-action="approve">Approve</button>
                     <button type="button" class="reject-button" data-action="reject">Reject</button>

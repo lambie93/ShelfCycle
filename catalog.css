@@ -36,12 +36,12 @@ footer {
 }
 
 .primary-button {
-    background: #a0612d;
+    background: #428a9b;
     color: #fff;
 }
 
 .secondary-button {
-    background: #2b2118;
+    background: #2e7d32;
     color: #fff;
 }
 
@@ -537,8 +537,6 @@ footer {
     font-family: inherit;
 }
 
-/* Maps page */
-
 .map-section {
     margin-top: 1.5rem;
 }
@@ -881,4 +879,8 @@ footer {
 .card-actions button:hover {
     border-color: #428a9b;
     color: #428a9b;
+}
+
+#scanButton {
+    background: #2e7d32;
 }
